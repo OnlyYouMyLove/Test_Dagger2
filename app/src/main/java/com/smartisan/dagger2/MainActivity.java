@@ -10,15 +10,22 @@ import com.google.gson.Gson;
 
 import javax.inject.Inject;
 
+import dagger.Lazy;
+
 public class MainActivity extends AppCompatActivity {
-//    @Inject
+    //    @Inject
 //    Person mPerson;
     @Inject
     Gson mGson;
     @Inject
     Gson mGson2;
-//    @Inject
+    //    @Inject
 //    Car mCar;
+//    @Inject
+//    SuperMan mSuperMan;
+
+    @Inject
+    Lazy<SuperMan> mSuperManLazy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +43,18 @@ public class MainActivity extends AppCompatActivity {
 
         App.get(MainActivity.this).getActivityComponent().inject(this);
 
-        Log.d("fukq:MainActivity",mGson.hashCode()+"");
-        Log.d("fukq:MainActivity",mGson2.hashCode()+"");
-
-        findViewById(R.id.bt_skip_to_second).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,SecondActivity.class));
-            }
-        });
+//        Log.d("fukq:MainActivity", mGson.hashCode() + "");
+//        Log.d("fukq:MainActivity", mGson2.hashCode() + "");
+//
+//        findViewById(R.id.bt_skip_to_second).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+//            }
+//        });
+        SuperMan superMan = mSuperManLazy.get();
+        String str = superMan.fighting();
+        Log.d("fukq", "onCreate: str" + str);
     }
 }
 

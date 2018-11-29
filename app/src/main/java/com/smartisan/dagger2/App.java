@@ -10,7 +10,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        mActivityComponent = DaggerActivityComponent.builder().build();
+        mActivityComponent = DaggerActivityComponent.builder().superManComponent(DaggerSuperManComponent.builder().build()).build();
     }
 
     public static App get(Context context){
