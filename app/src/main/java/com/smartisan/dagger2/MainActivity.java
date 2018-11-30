@@ -13,26 +13,26 @@ import javax.inject.Inject;
 import dagger.Lazy;
 
 public class MainActivity extends AppCompatActivity {
-    //    @Inject
-//    Person mPerson;
-    @Inject
-    Gson mGson;
-    @Inject
-    Gson mGson2;
+        @Inject
+    Person mPerson;
+//    @Inject
+//    Gson mGson;
+//    @Inject
+//    Gson mGson2;
     //    @Inject
 //    Car mCar;
 //    @Inject
 //    SuperMan mSuperMan;
 
-    @Inject
-    Lazy<SuperMan> mSuperManLazy;
+//    @Inject
+//    Lazy<SuperMan> mSuperManLazy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        DaggerMainActivityComponent.create().inject(this);
-//        mPerson.eat();
+        DaggerMainActivityComponent.create().inject(this);
+        mPerson.eat();
 
 //        String jsonData = "{'name':'fukq','age':18}";
 //        Man man = mGson.fromJson(jsonData,Man.class);
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 //        String str =mCar.run();
 ////        Log.d("fukq","car---" + str);
 
-        App.get(MainActivity.this).getActivityComponent().inject(this);
+//        App.get(MainActivity.this).getActivityComponent().inject(this);
 
 //        Log.d("fukq:MainActivity", mGson.hashCode() + "");
 //        Log.d("fukq:MainActivity", mGson2.hashCode() + "");
@@ -52,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(new Intent(MainActivity.this, SecondActivity.class));
 //            }
 //        });
-        SuperMan superMan = mSuperManLazy.get();
-        String str = superMan.fighting();
-        Log.d("fukq", "onCreate: str" + str);
+//        SuperMan superMan = mSuperManLazy.get();
+//        String str = superMan.fighting();
+//        Log.d("fukq", "onCreate: str" + str);
     }
 }
 
